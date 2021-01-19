@@ -6,6 +6,8 @@ class EmailTest extends PHPUnit_Framework_TestCase
 {
 
     private $email;
+
+
     public function setUp()
     {
         parent::setUp();
@@ -15,7 +17,7 @@ class EmailTest extends PHPUnit_Framework_TestCase
     public function test_checkEmail_givenGoodEmail_shouldReturnTrue(){
 
         //Act
-        $test = $this->email->checkEmail("axel.dec@hotmail.com");
+        $test = $this->GetCheckEmail("axel.dec@hotmail.com");
 
         //Assert
         $this->assertEquals(true,$test);
@@ -24,9 +26,18 @@ class EmailTest extends PHPUnit_Framework_TestCase
     public function test_checkEmail_givenBadEmail_shouldReturnFalse(){
 
         //Act
-        $test = $this->email->checkEmail("axel.decl.hotmail.com");
+        $test = $this->GetCheckEmail("axel.decl.hotmail.com");
 
-
+        //Assert
         $this->assertEquals(false,$test);
+    }
+
+    /**
+     * @return mixed
+     */
+    public function GetCheckEmail(string $str)
+    {
+        $test = $this->email->checkEmail($str);
+        return $test;
     }
 }
